@@ -21,6 +21,7 @@ public:
         {
         }
         Value(Value&&) = default;
+        Value& operator=(Value&&) = default;
         Value(const Value& other);
 
         FieldType value;
@@ -33,6 +34,7 @@ public:
     }
     Event(const Event& other) = default;
     Event(Event&&) = default;
+    Event& operator=(const Event& other) = default;
 
     ~Event();
 

@@ -10,6 +10,7 @@ option(ENABLE_BENCHMARKS "Enable benchmarks" OFF)
 option(ENABLE_EXAMPLES "Enable examples" OFF)
 option(ENABLE_DOC "Build documentation" ON)
 option(ENABLE_CLIENT "Enable client application for parsing HawkTracer stream" ON)
+option(ENABLE_VIEWER "Enable application for viewing HawkTracer results" ON)
 option(ENABLE_PYTHON_BINDINGS "Enable Python bindings (requires ENABLE_CLIENT=ON)" OFF)
 
 option(BUILD_STATIC_LIB "Build static hawktracer library" OFF)
@@ -71,11 +72,15 @@ endif(BUILD_STATIC_LIB)
 
 add_subdirectory(lib)
 
-if(ENABLE_CLIENT)
+if(ENABLE_CLIENT OR ENABLE_VIEWER)
     add_subdirectory(parser)
     add_subdirectory(client_utils)
     add_subdirectory(client)
 endif(ENABLE_CLIENT)
+
+if(ENABLE_VIEWER)
+    add_subdirectory(viewer)
+endif()
 
 add_subdirectory(bindings)
 add_subdirectory(tools_integration)
