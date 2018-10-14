@@ -13,3 +13,8 @@ add_executable(hawktracer-viewer WIN32
     controller.cpp)
 
 target_link_libraries(hawktracer-viewer Qt5::Widgets Qt5::Charts hawktracer_parser hawktracer_client_utils)
+
+install(TARGETS hawktracer-viewer
+    RUNTIME DESTINATION bin
+    COMPONENT applications)
+
