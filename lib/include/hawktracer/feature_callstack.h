@@ -20,6 +20,8 @@ HT_API void ht_feature_callstack_start_int(HT_Timeline* timeline, HT_CallstackEv
 
 HT_API void ht_feature_callstack_start_string(HT_Timeline* timeline, const char* label);
 
+HT_API size_t ht_feature_callstack_get_snapshot(HT_Timeline* timeline, int* out_data, size_t max_size);
+
 HT_DECLS_END
 
 #endif /* HT_FEATURE_CALLSTACK_H */

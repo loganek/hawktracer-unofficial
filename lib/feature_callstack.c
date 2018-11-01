@@ -78,3 +78,17 @@ void ht_feature_callstack_start_string(HT_Timeline* timeline, const char* label)
 
     ht_feature_callstack_start(timeline, (HT_CallstackBaseEvent*)&event);
 }
+
+size_t ht_feature_callstack_get_snapshot(HT_Timeline* timeline, int* out_data, size_t max_size)
+{
+    HT_FeatureCallstack* f = HT_TIMELINE_FEATURE(timeline, HT_FEATURE_CALLSTACK, HT_FeatureCallstack);
+    size_t i;
+
+    for (i = 0; i < f->stack.sizes_stack.size && i < max_size; i++)
+    {
+        HT_CallstackIntEvent* event = (HT_CallstackIntEvent*)((HT_Byte*)f->stack.data + (size_t)f->stack.sizes_stack.data[i]);
+        out_data[i] = event->label;
+    }
+
+    return i;
+}
