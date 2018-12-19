@@ -42,6 +42,8 @@ script:
   - make
   - make test CTEST_OUTPUT_ON_FAILURE=TRUE
   - ./benchmarks/hawktracer_benchmarks
+  - make amalgamated_hawktracer_c
+  - make amalgamated_hawktracer_cpp
 
 branches:
   only:
